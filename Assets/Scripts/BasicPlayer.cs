@@ -12,6 +12,7 @@ public class BasicPlayer : MonoBehaviour {
     public LayerMask weaponLayer;
     [HideInInspector]
     public Ghost ghost;
+    private Attack[] ats;
     public GameObject pivotPoint;
     private List<SpriteRenderer> sprites;
     public Weapon weapon;
@@ -45,6 +46,7 @@ public class BasicPlayer : MonoBehaviour {
         sprites = new List<SpriteRenderer>();
         getSR(gameObject, ref sprites);
         anim.SetBool("Grounded", true);
+        ats = GetComponentsInChildren<Attack>();
     }
 	
 	// Update is called once per frame
@@ -97,6 +99,12 @@ public class BasicPlayer : MonoBehaviour {
                         case Weapon.WeaponType.ShortRange: anim.SetInteger("Weapon", 2); break;
                         case Weapon.WeaponType.Melee: anim.SetInteger("Weapon", 3); break;
                     }
+                    ats = GetComponentsInChildren<Attack>();
+                    foreach (Attack a in ats)
+                    {
+                        a.playerID = playerID;
+                    }
+                    break;
                 }
             }
             else
@@ -108,6 +116,11 @@ public class BasicPlayer : MonoBehaviour {
                 weapon.box.enabled = true;
                 weapon = null;
                 weapon.rigid.isKinematic = false;
+                ats = GetComponentsInChildren<Attack>();
+                foreach (Attack a in ats)
+                {
+                    a.playerID = playerID;
+                }
             }
         }
         else if (rePlayer.GetButtonDown("Leave") || health <= 0)
@@ -188,6 +201,10 @@ public class BasicPlayer : MonoBehaviour {
         canMove = true;
         rePlayer = ReInput.players.GetPlayer(ghost.playerID);
         playerID = ghost.playerID;
+        foreach(Attack a in ats)
+        {
+            a.playerID = playerID;
+        }
     }
 
     public void Damage(int i)
