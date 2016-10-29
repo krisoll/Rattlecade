@@ -172,7 +172,7 @@ public class BasicPlayer : MonoBehaviour {
         if (transform.position.x < v.x && flipped == 1) flipped = -1;
         if (transform.position.x > v.x && flipped == -1) flipped = 1;
         transform.localScale = new Vector3(flipped, transform.localScale.y, transform.localScale.z);
-        Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - pivotPoint.transform.position;
+        Vector3 diff = v - pivotPoint.transform.position;
         diff.Normalize();
 
         float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
