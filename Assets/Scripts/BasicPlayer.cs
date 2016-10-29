@@ -6,6 +6,7 @@ public class BasicPlayer : MonoBehaviour {
     public Rigidbody2D rigid;
     public BoxCollider2D box;
     public LayerMask ground;
+    public Ghost gost;
     public float velocity;
     public float jumpVelocity;
     private RaycastHit2D grounded;

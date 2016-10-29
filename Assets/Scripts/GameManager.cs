@@ -3,6 +3,7 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
     public static GameManager gManager;
+    public playerData[] players;
 
 	// Use this for initialization
 	void Awake () {

@@ -12,7 +12,13 @@ public class Ghost : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        if (!GameManager.gManager.players[playerID].active)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         rePlayer = ReInput.players.GetPlayer(playerID);
 	}
 	
@@ -27,4 +33,9 @@ public class Ghost : MonoBehaviour {
         float yAxis = rePlayer.GetAxis("Vertical");
         rigid.velocity = Vector2.MoveTowards(rigid.velocity, new Vector2(velocity * xAxis, velocity * yAxis), softVelocity * Time.deltaTime);
     }
+}
+[System.Serializable]
+public class playerData
+{
+    public bool active;
 }
