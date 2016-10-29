@@ -9,11 +9,11 @@ public class BasicPlayer : MonoBehaviour {
     public BoxCollider2D box;
     public Animator anim;
     public LayerMask ground;
+    public LayerMask weaponLayer;
     [HideInInspector]
     public Ghost ghost;
     public GameObject pivotPoint;
     private List<SpriteRenderer> sprites;
-    [HideInInspector]
     public Weapon weapon;
     public GameObject weaponContainer;
     public int health;
@@ -27,6 +27,16 @@ public class BasicPlayer : MonoBehaviour {
     private bool canMove;
     private float TimeCount;
     private float TimeCount2;
+
+    void OnDrawGizmos()
+    {
+        Vector2 v;
+        if (playerID == 0) v = Camera.main.ScreenToWorldPoint(Input.mousePosition) - pivotPoint.transform.position;
+        else v = new Vector3(rePlayer.GetAxis("HAim") * 10, rePlayer.GetAxis("VAim") * 10);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere((Vector2)pivotPoint.transform.position + v.normalized, .03f);
+    }
+
     // Use this for initialization
     void Start () {
         rePlayer = ReInput.players.GetPlayer(playerID);
@@ -64,9 +74,10 @@ public class BasicPlayer : MonoBehaviour {
             if (weapon == null)
             {
                 RaycastHit2D[] rch = Physics2D.BoxCastAll((Vector2)transform.position + box.offset, box.size, 0, Vector2.down, .1f,
-                                                   LayerMask.NameToLayer("Weapon"));
+                                                   weaponLayer);
                 foreach (RaycastHit2D r in rch)
                 {
+                    Debug.Log("Finded");
                     Weapon w = r.collider.GetComponent<Weapon>();
                     if (w == null || w.equiped) continue;
                     weapon = w;
@@ -76,14 +87,25 @@ public class BasicPlayer : MonoBehaviour {
                     w.transform.localEulerAngles = Vector2.zero;
                     w.rigid.velocity = Vector2.zero;
                     w.rigid.Sleep();
+                    w.rigid.isKinematic = true;
+                    w.box.enabled = false;
+                    switch (w.type)
+                    {
+                        case Weapon.WeaponType.LongRange: anim.SetInteger("Weapon", 1); break;
+                        case Weapon.WeaponType.ShortRange: anim.SetInteger("Weapon", 2); break;
+                        case Weapon.WeaponType.Melee: anim.SetInteger("Weapon", 3); break;
+                    }
                 }
             }
             else
             {
+                anim.SetInteger("Weapon", 0);
                 weapon.equiped = false;
                 weapon.transform.SetParent(null);
                 weapon.rigid.WakeUp();
+                weapon.box.enabled = true;
                 weapon = null;
+                weapon.rigid.isKinematic = false;
             }
         }
         else if (rePlayer.GetButtonDown("Leave") || health <= 0)

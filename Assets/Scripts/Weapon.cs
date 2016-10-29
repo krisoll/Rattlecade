@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
     public Animator anim;
     public Rigidbody2D rigid;
     public GameObject shooter;
+    public BoxCollider2D box;
     [HideInInspector]
     public bool equiped;
     public WeaponType type;
