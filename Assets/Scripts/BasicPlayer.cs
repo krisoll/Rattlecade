@@ -9,6 +9,7 @@ public class BasicPlayer : MonoBehaviour {
     public BoxCollider2D box;
     public Animator anim;
     public LayerMask ground;
+    public LayerMask walls;
     public LayerMask weaponLayer;
     [HideInInspector]
     public Ghost ghost;
@@ -70,6 +71,9 @@ public class BasicPlayer : MonoBehaviour {
         horizontal = rePlayer.GetAxisRaw("Horizontal");
         anim.SetFloat("Velocity", Mathf.Abs(horizontal));
         rigid.velocity = new Vector2(horizontal * velocity, rigid.velocity.y);
+        RaycastHit2D rc = Physics2D.BoxCast((Vector2)transform.position + box.offset, box.size + new Vector2(-.06f, -.02f), 0,
+                                            (horizontal > 0 ? Vector2.right:Vector2.left), 0.12f, walls);
+        if (rc && rc.collider.GetComponent<PlatformEffector2D>() == null) rigid.velocity = new Vector2(0, rigid.velocity.y);
         if(weapon != null && weapon.shootType == Weapon.ShootType.Automatic && weapon.canShoot() && rePlayer.GetButton("Shoot"))
         {
             anim.SetTrigger("Attack");
@@ -141,12 +145,13 @@ public class BasicPlayer : MonoBehaviour {
             anim.SetTrigger("Die");
             anim.ResetTrigger("Attack");
             anim.ResetTrigger("Shoot");
+            ghost.free = true;
             ghost = null;
             anim.SetFloat("Velocity", 0);
         }
 	}
 
-    public void LateUpdate()
+    void LateUpdate()
     {
         if (!canMove) return;
         FlipToMouse();

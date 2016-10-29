@@ -8,6 +8,8 @@ public class Ghost : MonoBehaviour {
     public Animator anim;
     public LayerMask skelletonLayer;
     public BoxCollider2D box;
+    public SpriteRenderer sprite;
+    public SpriteRenderer lightCircle;
     public int playerID;
     public float boxCastDistance;
     public float velocity;
@@ -15,6 +17,10 @@ public class Ghost : MonoBehaviour {
     private Rewired.Player rePlayer;
     bool alive = true;
     private int flipped = -1;
+    [HideInInspector]
+    public bool free;
+    public float lightTime;
+
 
     // Use this for initialization
     void Start ()
@@ -26,7 +32,8 @@ public class Ghost : MonoBehaviour {
         }
         rePlayer = ReInput.players.GetPlayer(playerID);
         Camera.main.GetComponent<ProCamera2D>().AddCameraTarget(transform);
-
+        free = true;
+        lightTime = 1;
     }
 	// Update is called once per frame
 	void Update () {
@@ -38,6 +45,16 @@ public class Ghost : MonoBehaviour {
         detectControl();
         savePosition();
 	}
+
+    void LateUpdate()
+    {
+        if (!free) return;
+        lightTime = Mathf.Clamp(lightTime - Time.deltaTime, 0, 1);
+        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 
+                                    Mathf.Max(GameManager.gManager.players[playerID].alpha, lightTime));
+        GameManager.gManager.players[playerID].alpha = 0;
+        lightCircle.color = new Color(lightCircle.color.r, lightCircle.color.g, lightCircle.color.b, lightTime / 2);
+    }
 
     void detectControl()
     {
@@ -60,8 +77,10 @@ public class Ghost : MonoBehaviour {
                 bp.anim.SetTrigger("Alive");
                 this.enabled = false;
                 rigid.velocity = Vector2.zero;
+                free = false;
                 return;
             }
+            lightTime = 1;
         }
     }
 
@@ -103,4 +122,5 @@ public class playerData
     public bool active;
     public bool dead;
     public Vector3 position;
+    public float alpha;
 }
