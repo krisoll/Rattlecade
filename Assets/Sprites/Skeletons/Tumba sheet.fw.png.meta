@@ -1,0 +1,227 @@
+fileFormatVersion: 2
+guid: 1e93de5503b7a444f8797104f5b91b5e
+timeCreated: 1477717180
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Tumba sheet.fw_0
+    21300002: Tumba sheet.fw_1
+    21300004: Tumba sheet.fw_2
+    21300006: Tumba sheet.fw_3
+    21300008: Tumba sheet.fw_4
+    21300010: Tumba sheet.fw_5
+    21300012: Tumba sheet.fw_6
+    21300014: Tumba sheet.fw_7
+    21300016: Tumba sheet.fw_8
+    21300018: Tumba sheet.fw_9
+    21300020: Tumba sheet.fw_10
+    21300022: Tumba sheet.fw_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tumba sheet.fw_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 72
+        width: 29
+        height: 24
+      alignment: 9
+      pivot: {x: 0.53139246, y: 0.05112998}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tumba sheet.fw_1
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 71
+        width: 15
+        height: 22
+      alignment: 9
+      pivot: {x: 0.15607707, y: 0.94829524}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tumba sheet.fw_2
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 46
+        width: 11
+        height: 19
+      alignment: 9
+      pivot: {x: 0.1689516, y: 0.87533367}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tumba sheet.fw_3
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 49
+        width: 18
+        height: 21
+      alignment: 9
+      pivot: {x: 0.5927245, y: 0.0592586}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tumba sheet.fw_4
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 50
+        width: 11
+        height: 19
+      alignment: 9
+      pivot: {x: 0.22412595, y: 0.9232487}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tumba sheet.fw_5
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 12
+        width: 22
+        height: 32
+      alignment: 9
+      pivot: {x: 0.9069143, y: 0.95045054}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tumba sheet.fw_6
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 40
+        width: 19
+        height: 8
+      alignment: 9
+      pivot: {x: 0.42014194, y: 0.7086296}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tumba sheet.fw_7
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 15
+        width: 22
+        height: 32
+      alignment: 9
+      pivot: {x: 0.9069141, y: 0.9646752}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tumba sheet.fw_8
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 26
+        width: 9
+        height: 13
+      alignment: 9
+      pivot: {x: 0.5337181, y: 0.8618193}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tumba sheet.fw_9
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 26
+        width: 12
+        height: 14
+      alignment: 9
+      pivot: {x: 0.3862022, y: 0.8468132}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tumba sheet.fw_10
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 4
+        width: 12
+        height: 22
+      alignment: 9
+      pivot: {x: 0.4873562, y: 0.94829524}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Tumba sheet.fw_11
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 4
+        width: 12
+        height: 22
+      alignment: 9
+      pivot: {x: 0.44942346, y: 0.98277944}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
