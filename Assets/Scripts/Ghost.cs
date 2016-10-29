@@ -72,7 +72,9 @@ public class Ghost : MonoBehaviour {
 
     void EndPossession()
     {
-        gameObject.SetActive(false);
+        if (alive)
+            gameObject.SetActive(false);
+        else Destroy(gameObject);
     }
     void EndEscape()
     {
@@ -86,7 +88,7 @@ public class Ghost : MonoBehaviour {
     }
     public void Die()
     {
-        anim.SetTrigger("Die");
+        anim.SetTrigger("Possess");
         alive = false;
         GameManager.gManager.players[playerID].dead = true;
     }

@@ -81,7 +81,6 @@ public class BasicPlayer : MonoBehaviour {
                                                    weaponLayer);
                 foreach (RaycastHit2D r in rch)
                 {
-                    Debug.Log("Finded");
                     Weapon w = r.collider.GetComponent<Weapon>();
                     if (w == null || w.equiped) continue;
                     weapon = w;
@@ -187,6 +186,10 @@ public class BasicPlayer : MonoBehaviour {
         Vector2 v = savedAim + (Vector2)pivotPoint.transform.position;
         if (transform.position.x < v.x - 0.01 && flipped == 1) flipped = -1;
         if (transform.position.x > v.x + 0.01 && flipped == -1) flipped = 1;
+        foreach (Attack a in ats)
+        {
+            a.fliped = flipped;
+        }
         transform.localScale = new Vector3(flipped, transform.localScale.y, transform.localScale.z);
         Vector3 diff = v - (Vector2)pivotPoint.transform.position;
         diff.Normalize();
