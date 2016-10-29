@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c1f45f7bb4d21994f81ff8d4f4dce439
-timeCreated: 1477749879
+timeCreated: 1477751175
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -33,6 +33,8 @@ TextureImporter:
     21300052: chainsaw
     21300054: suckerbag
     21300056: coin
+    21300058: weapons.fw_0
+    21300060: weapons.fw_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -452,6 +454,32 @@ TextureImporter:
         x: 18
         y: 36
         width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: weapons.fw_0
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 214
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: weapons.fw_1
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 214
+        width: 6
         height: 6
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
