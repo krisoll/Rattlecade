@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
     public Animator anim;
     public Rigidbody2D rigid;
     public GameObject shooter;
+    public GameObject bullet;
     public BoxCollider2D box;
     public Attack attack;
     public float spread;
@@ -17,6 +18,12 @@ public class Weapon : MonoBehaviour
         LongRange,
         ShortRange,
         Melee
+    }
+    public ShootType shootType;
+    public enum ShootType
+    {
+        Automatic,
+        SemiAutomatic
     }
     public int fireRate;
     private float fireTimeDelay;
@@ -45,5 +52,16 @@ public class Weapon : MonoBehaviour
             return true;
         }
         return false;
+    }
+    public void Shoot()
+    {
+        if (anim == null) return;
+        anim.SetTrigger("Shoot");
+    }
+
+    public void fireBullet()
+    {
+        if (bullet != null && shooter != null)
+            Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, shooter.transform.eulerAngles.z));
     }
 }
