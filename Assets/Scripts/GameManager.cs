@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Com.LuisPedroFonseca.ProCamera2D;
+using UnityEngine.SceneManagement;
+
 public class GameManager : MonoBehaviour {
     public static GameManager gManager;
     public playerData[] players;
@@ -18,11 +20,11 @@ public class GameManager : MonoBehaviour {
             gManager = this;
         }
         //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 	
 	// Update is called once per frame
 	void Update () {
-	
+        if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(0);
 	}
 }

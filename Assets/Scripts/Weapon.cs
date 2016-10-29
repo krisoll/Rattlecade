@@ -7,6 +7,8 @@ public class Weapon : MonoBehaviour
     public Rigidbody2D rigid;
     public GameObject shooter;
     public BoxCollider2D box;
+    public Attack attack;
+    public float spread;
     [HideInInspector]
     public bool equiped;
     public WeaponType type;
@@ -20,15 +22,20 @@ public class Weapon : MonoBehaviour
     private float fireTimeDelay;
     private float timeSaved;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         fireTimeDelay = 1f / fireRate;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	    
-	}
+        deactivate();
+    }
+
+    public void activate()
+    {
+        if (attack != null) attack.enabled = true;
+    }
+    public void deactivate()
+    {
+        if (attack != null) attack.enabled = false;
+    }
 
     public bool canShoot()
     {

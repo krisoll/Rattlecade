@@ -216,4 +216,13 @@ public class BasicPlayer : MonoBehaviour {
         health -= i;
     }
 
+    public void activateWeapon()
+    {
+        weapon.activate();
+    }
+
+    public void deactivateWeapon()
+    {
+        weapon.deactivate();
+    }
 }
