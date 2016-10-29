@@ -114,8 +114,8 @@ public class BasicPlayer : MonoBehaviour {
                 weapon.transform.SetParent(null);
                 weapon.rigid.WakeUp();
                 weapon.box.enabled = true;
-                weapon = null;
                 weapon.rigid.isKinematic = false;
+                weapon = null;
                 ats = GetComponentsInChildren<Attack>();
                 foreach (Attack a in ats)
                 {
