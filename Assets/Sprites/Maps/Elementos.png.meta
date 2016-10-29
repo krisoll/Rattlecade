@@ -1,9 +1,12 @@
 fileFormatVersion: 2
 guid: 2d9279c7f8501ea44a717c2d6118e46c
-timeCreated: 1477750258
+timeCreated: 1477754725
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Elementos_0
+    21300002: Elementos_1
+    21300004: Elementos_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,11 +29,11 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 0
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +41,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +54,46 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Elementos_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 15
+        width: 32
+        height: 85
+      alignment: 9
+      pivot: {x: 0.55635583, y: 0.15447803}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Elementos_1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 15
+        width: 97
+        height: 138
+      alignment: 9
+      pivot: {x: 0.43094558, y: 0.10982718}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Elementos_2
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 9
+        width: 69
+        height: 105
+      alignment: 9
+      pivot: {x: 0.41412464, y: 0.1687665}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
