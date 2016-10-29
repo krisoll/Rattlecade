@@ -9,5 +9,7 @@ Assets/Ferr/2DTerrain/TerrainMaterials/ForegroundTerrainMaterial.prefab
 Assets/Ferr/2DTerrain/TerrainMaterials/CaveTerrainMaterial.prefab
 Assets/Sprites/Maps/Arena 1/Arena terrain .prefab
 Assets/Sprites/Maps/Arena 1/brick wall terrain.prefab
+Assets/Sprites/Maps/Arena 1/grass rail terrain.prefab
+Assets/Sprites/Maps/Arena 1/reja terrain.prefab
 
 [Ferr2DT_PathTerrain]
