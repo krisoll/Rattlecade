@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using Com.LuisPedroFonseca.ProCamera2D;
 public class GameManager : MonoBehaviour {
     public static GameManager gManager;
     public playerData[] players;
-
 	// Use this for initialization
 	void Awake () {
         Application.targetFrameRate = 30;
