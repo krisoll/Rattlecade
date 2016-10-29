@@ -13,7 +13,7 @@ public class BasicPlayer : MonoBehaviour {
     public Ghost ghost;
     public GameObject pivotPoint;
     private List<SpriteRenderer> sprites;
-    public int weapon;
+    public Weapon weapon;
     public int health;
     public int stamina;
     public float velocity;
@@ -39,21 +39,29 @@ public class BasicPlayer : MonoBehaviour {
             DestroySelf();
         }
         if (!canMove) return;
-        grounded = Physics2D.BoxCast(new Vector2(transform.position.x + box.offset.x, transform.position.y + box.offset.y), box.size, 0, Vector2.down, 0.01f, ground);
+        grounded = Physics2D.BoxCast(new Vector2(transform.position.x + box.offset.x, transform.position.y + box.offset.y), 
+                                     box.size, 0, Vector2.down, 0.05f, ground);
+        anim.SetBool("Grounded", grounded);
         if (grounded)
         {
-            if (rePlayer.GetAxis("Vertical")>0)
+            if (rePlayer.GetButtonDown("Jump"))
             {
                 rigid.velocity = new Vector2(rigid.velocity.x, jumpVelocity);
             }
         }
-        //FlipToMouse();
         horizontal = rePlayer.GetAxisRaw("Horizontal");
         anim.SetFloat("Velocity", Mathf.Abs(horizontal));
         rigid.velocity = new Vector2(horizontal * velocity, rigid.velocity.y);
         if (rePlayer.GetButtonDown("Shoot"))
         {
-
+            if(weapon == null)
+            {
+                anim.SetTrigger("Attack");
+            }
+            else
+            {
+                anim.SetTrigger("Shoot");
+            }
         }
         else if (rePlayer.GetButtonDown("Leave") || health <= 0)
         {
@@ -62,6 +70,8 @@ public class BasicPlayer : MonoBehaviour {
             ghost.gameObject.SetActive(true);
             ghost.anim.SetTrigger("Escaping");
             anim.SetTrigger("Die");
+            anim.ResetTrigger("Attack");
+            anim.ResetTrigger("Shoot");
             ghost = null;
             anim.SetFloat("Velocity", 0);
         }
@@ -123,6 +133,7 @@ public class BasicPlayer : MonoBehaviour {
 
     public void CanMove()
     {
+        if (ghost == null) return;
         canMove = true;
         rePlayer = ReInput.players.GetPlayer(ghost.playerID);
     }

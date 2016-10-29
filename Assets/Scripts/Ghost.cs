@@ -42,7 +42,7 @@ public class Ghost : MonoBehaviour {
         float yAxis = rePlayer.GetAxis("Vertical");
         rigid.velocity = Vector2.MoveTowards(rigid.velocity, new Vector2(velocity * xAxis, velocity * yAxis), softVelocity * Time.deltaTime);
         Flip();
-        if (rePlayer.GetButtonDown("Leave"))
+        if (rePlayer.GetButtonDown("Leave") || rePlayer.GetButtonDown("PickUp"))
         {
             RaycastHit2D[] rch = Physics2D.BoxCastAll((Vector2)transform.position + box.offset, box.size, 0, Vector3.down, boxCastDistance,
                                                skelletonLayer);
