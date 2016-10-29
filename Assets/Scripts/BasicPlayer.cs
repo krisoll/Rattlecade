@@ -7,8 +7,12 @@ public class BasicPlayer : MonoBehaviour {
     public BoxCollider2D box;
     public Animator anim;
     public LayerMask ground;
+    [HideInInspector]
     public Ghost ghost;
+    public GameObject pivotPoint;
+    public int weapon;
     public int health;
+    public int stamina;
     public float velocity;
     public float jumpVelocity;
     private RaycastHit2D grounded;
@@ -32,11 +36,15 @@ public class BasicPlayer : MonoBehaviour {
                 rigid.velocity = new Vector2(rigid.velocity.x, jumpVelocity);
             }
         }
-        Flip();
+        //FlipToMouse();
         horizontal = rePlayer.GetAxisRaw("Horizontal");
         anim.SetFloat("Velocity", Mathf.Abs(horizontal));
         rigid.velocity = new Vector2(horizontal * velocity, rigid.velocity.y);
-        if (rePlayer.GetButtonDown("Leave") || health <= 0)
+        if (rePlayer.GetButtonDown("Shoot"))
+        {
+
+        }
+        else if (rePlayer.GetButtonDown("Leave") || health <= 0)
         {
             this.canMove = false;
             ghost.transform.SetParent(null);
@@ -48,11 +56,30 @@ public class BasicPlayer : MonoBehaviour {
         }
 	}
 
+    public void LateUpdate()
+    {
+        if (!canMove) return;
+        FlipToMouse();
+    }
+
     void Flip()
     {
         if (rigid.velocity.x > 0 && flipped == 1) flipped = -1;
         if (rigid.velocity.x < 0 && flipped == -1) flipped = 1;
         transform.localScale = new Vector3(flipped, transform.localScale.y, transform.localScale.z);
+    }
+
+    public void FlipToMouse()
+    {
+        Vector3 v = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (transform.position.x < v.x && flipped == 1) flipped = -1;
+        if (transform.position.x > v.x && flipped == -1) flipped = 1;
+        transform.localScale = new Vector3(flipped, transform.localScale.y, transform.localScale.z);
+        Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - pivotPoint.transform.position;
+        diff.Normalize();
+
+        float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+        pivotPoint.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - (flipped == 1 ? 180 : 0));
     }
 
     public void CanMove()
