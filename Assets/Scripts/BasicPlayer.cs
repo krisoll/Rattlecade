@@ -20,6 +20,7 @@ public class BasicPlayer : MonoBehaviour {
     public int stamina;
     public float velocity;
     public float jumpVelocity;
+    public float aimSensibility;
     private RaycastHit2D grounded;
     private Player rePlayer;
     private float horizontal;
@@ -27,6 +28,7 @@ public class BasicPlayer : MonoBehaviour {
     private bool canMove;
     private float TimeCount;
     private float TimeCount2;
+    private Vector2 savedAim;
 
     void OnDrawGizmos()
     {
@@ -166,13 +168,14 @@ public class BasicPlayer : MonoBehaviour {
 
     public void FlipToMouse()
     {
-        Vector3 v;
-        if (playerID == 0) v = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        else v = pivotPoint.transform.position + new Vector3(rePlayer.GetAxis("HAim") * 10, rePlayer.GetAxis("VAim") * 10);
+        if (playerID == 0) savedAim = Camera.main.ScreenToWorldPoint(Input.mousePosition) - pivotPoint.transform.position;
+        else if(new Vector3(rePlayer.GetAxis("HAim"), rePlayer.GetAxis("VAim")).magnitude > aimSensibility)
+                savedAim = (new Vector3(rePlayer.GetAxis("HAim"), rePlayer.GetAxis("VAim"))).normalized * 2;
+        Vector2 v = savedAim + (Vector2)pivotPoint.transform.position;
         if (transform.position.x < v.x - 0.01 && flipped == 1) flipped = -1;
         if (transform.position.x > v.x + 0.01 && flipped == -1) flipped = 1;
         transform.localScale = new Vector3(flipped, transform.localScale.y, transform.localScale.z);
-        Vector3 diff = v - pivotPoint.transform.position;
+        Vector3 diff = v - (Vector2)pivotPoint.transform.position;
         diff.Normalize();
 
         float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
