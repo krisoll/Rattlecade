@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ce5a3dfd4f9faf748bf4a115bdff429d
-timeCreated: 1477704672
+timeCreated: 1477709681
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -15,6 +15,7 @@ TextureImporter:
     21300016: Bruno sheet.fw_8
     21300018: Bruno sheet.fw_9
     21300020: Bruno sheet.fw_10
+    21300022: Bruno sheet.fw_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -203,6 +204,19 @@ TextureImporter:
         height: 22
       alignment: 9
       pivot: {x: 0.43509293, y: 0.9615143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bruno sheet.fw_11
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 65
+        width: 16
+        height: 22
+      alignment: 9
+      pivot: {x: 0.18091914, y: 0.9414484}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
