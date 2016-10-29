@@ -41,6 +41,7 @@ public class Ghost : MonoBehaviour {
         rigid.velocity = Vector2.MoveTowards(rigid.velocity, new Vector2(velocity * xAxis, velocity * yAxis), softVelocity * Time.deltaTime);
         if(rePlayer.GetButtonDown("Shoot"))
         {
+            Debug.Log("Start possession: " + playerID);
             RaycastHit2D[] rch = Physics2D.BoxCastAll((Vector2)transform.position + box.offset, box.size, 0, Vector3.down, boxCastDistance,
                                                skelletonLayer);
             foreach(RaycastHit2D r in rch)
@@ -51,6 +52,9 @@ public class Ghost : MonoBehaviour {
                 transform.SetParent(bp.gameObject.transform);
                 transform.localPosition = Vector3.zero;
                 anim.SetTrigger("Possess");
+                bp.anim.SetTrigger("Alive");
+                this.enabled = false;
+                rigid.velocity = Vector2.zero;
                 return;
             }
         }
@@ -59,6 +63,11 @@ public class Ghost : MonoBehaviour {
     public void savePosition()
     {
         GameManager.gManager.players[playerID].position = transform.position;
+    }
+    
+    void EndPossession()
+    {
+        gameObject.SetActive(false);
     }
 }
 [System.Serializable]
