@@ -169,8 +169,8 @@ public class BasicPlayer : MonoBehaviour {
         Vector3 v;
         if (playerID == 0) v = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         else v = pivotPoint.transform.position + new Vector3(rePlayer.GetAxis("HAim") * 10, rePlayer.GetAxis("VAim") * 10);
-        if (transform.position.x < v.x && flipped == 1) flipped = -1;
-        if (transform.position.x > v.x && flipped == -1) flipped = 1;
+        if (transform.position.x < v.x - 0.01 && flipped == 1) flipped = -1;
+        if (transform.position.x > v.x + 0.01 && flipped == -1) flipped = 1;
         transform.localScale = new Vector3(flipped, transform.localScale.y, transform.localScale.z);
         Vector3 diff = v - pivotPoint.transform.position;
         diff.Normalize();
