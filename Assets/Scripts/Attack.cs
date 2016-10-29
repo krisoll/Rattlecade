@@ -1,14 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Attack : MonoBehaviour
 {
     public BoxCollider2D box;
-    [HideInInspector]
     public int playerID;
     public int damage;
     public LayerMask targets;
     public int fliped;
+    public List<int> ignoreID;
+
+    void Start()
+    {
+        ignoreID = new List<int>();
+    }
 
     void Update()
     {
@@ -19,8 +25,9 @@ public class Attack : MonoBehaviour
             BasicPlayer bp = r.collider.GetComponent<BasicPlayer>();
             if (bp != null)
             {
-                if (bp.playerID != playerID)
+                if (bp.playerID != playerID && !ignoreID.Contains(r.collider.GetInstanceID()))
                 {
+                    ignoreID.Add(r.collider.GetInstanceID());
                     bp.Damage(damage);
                     return;
                 }
@@ -28,8 +35,17 @@ public class Attack : MonoBehaviour
             Ghost g = r.collider.GetComponent<Ghost>();
             if (g != null)
             {
-                if (g.playerID != playerID) g.Die();
+                if (g.playerID != playerID && !ignoreID.Contains(r.collider.GetInstanceID()))
+                {
+                    ignoreID.Add(r.collider.GetInstanceID());
+                    g.Die();
+                }
             }
         }
+    }
+
+    void OnDisable()
+    {
+        ignoreID = new List<int>();
     }
 }

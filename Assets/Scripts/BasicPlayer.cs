@@ -47,6 +47,7 @@ public class BasicPlayer : MonoBehaviour {
         getSR(gameObject, ref sprites);
         anim.SetBool("Grounded", true);
         ats = GetComponentsInChildren<Attack>();
+        savedAim = Vector2.right * 2;
     }
 	
 	// Update is called once per frame
@@ -69,7 +70,11 @@ public class BasicPlayer : MonoBehaviour {
         horizontal = rePlayer.GetAxisRaw("Horizontal");
         anim.SetFloat("Velocity", Mathf.Abs(horizontal));
         rigid.velocity = new Vector2(horizontal * velocity, rigid.velocity.y);
-        if (rePlayer.GetButtonDown("Shoot"))
+        if(weapon != null && weapon.shootType == Weapon.ShootType.Automatic && weapon.canShoot() && rePlayer.GetButton("Shoot"))
+        {
+            anim.SetTrigger("Attack");
+        }
+        else if (rePlayer.GetButtonDown("Shoot") && (weapon == null || weapon.canShoot()))
         {
             anim.SetTrigger("Attack");
         }
@@ -216,4 +221,17 @@ public class BasicPlayer : MonoBehaviour {
         health -= i;
     }
 
+    public void activateWeapon()
+    {
+        weapon.activate();
+    }
+
+    public void deactivateWeapon()
+    {
+        weapon.deactivate();
+    }
+    public void weaponShoot()
+    {
+        weapon.Shoot();
+    }
 }

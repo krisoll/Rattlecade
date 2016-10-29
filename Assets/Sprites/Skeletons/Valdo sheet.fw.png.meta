@@ -1,0 +1,227 @@
+fileFormatVersion: 2
+guid: dff77b5042534794cb8d2f0d75408c6d
+timeCreated: 1477750003
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Valdo sheet.fw_0
+    21300002: Valdo sheet.fw_1
+    21300004: Valdo sheet.fw_2
+    21300006: Valdo sheet.fw_3
+    21300008: Valdo sheet.fw_4
+    21300010: Valdo sheet.fw_5
+    21300012: Valdo sheet.fw_6
+    21300014: Valdo sheet.fw_7
+    21300016: Valdo sheet.fw_8
+    21300018: Valdo sheet.fw_9
+    21300020: Valdo sheet.fw_10
+    21300022: Valdo sheet.fw_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Valdo sheet.fw_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 74
+        width: 20
+        height: 23
+      alignment: 9
+      pivot: {x: 0.21835002, y: 0.86056685}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Valdo sheet.fw_1
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 73
+        width: 32
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5488975, y: 0.1268742}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Valdo sheet.fw_2
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 48
+        width: 21
+        height: 19
+      alignment: 9
+      pivot: {x: 0.13489819, y: 0.88706326}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Valdo sheet.fw_3
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 48
+        width: 25
+        height: 23
+      alignment: 9
+      pivot: {x: 0.6314366, y: 0.04418962}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Valdo sheet.fw_4
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 52
+        width: 21
+        height: 19
+      alignment: 9
+      pivot: {x: 0.06038775, y: 0.920005}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Valdo sheet.fw_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 26
+        width: 32
+        height: 28
+      alignment: 9
+      pivot: {x: 0.45599222, y: 0.75706166}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Valdo sheet.fw_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 19
+        width: 31
+        height: 27
+      alignment: 9
+      pivot: {x: 0.5454274, y: 0.8071495}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Valdo sheet.fw_7
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 28
+        width: 10
+        height: 10
+      alignment: 9
+      pivot: {x: 0.5469421, y: 0.8911808}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Valdo sheet.fw_8
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 38
+        width: 22
+        height: 9
+      alignment: 9
+      pivot: {x: 0.4146515, y: 0.81294507}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Valdo sheet.fw_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 19
+        height: 22
+      alignment: 9
+      pivot: {x: 0.5000002, y: 0.95519215}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Valdo sheet.fw_10
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 0
+        width: 20
+        height: 22
+      alignment: 9
+      pivot: {x: 0.421764, y: 0.9765292}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Valdo sheet.fw_11
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 27
+        width: 12
+        height: 11
+      alignment: 9
+      pivot: {x: 0.27833143, y: 0.89829355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
