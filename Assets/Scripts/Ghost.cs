@@ -13,6 +13,7 @@ public class Ghost : MonoBehaviour {
     public float softVelocity;
     private Rewired.Player rePlayer;
     bool alive = true;
+    private int flipped = -1;
 
 
     // Use this for initialization
@@ -39,16 +40,16 @@ public class Ghost : MonoBehaviour {
         float xAxis = rePlayer.GetAxis("Horizontal");
         float yAxis = rePlayer.GetAxis("Vertical");
         rigid.velocity = Vector2.MoveTowards(rigid.velocity, new Vector2(velocity * xAxis, velocity * yAxis), softVelocity * Time.deltaTime);
-        if(rePlayer.GetButtonDown("Shoot"))
+        Flip();
+        if (rePlayer.GetButtonDown("Shoot"))
         {
-            Debug.Log("Start possession: " + playerID);
             RaycastHit2D[] rch = Physics2D.BoxCastAll((Vector2)transform.position + box.offset, box.size, 0, Vector3.down, boxCastDistance,
                                                skelletonLayer);
             foreach(RaycastHit2D r in rch)
             {
                 BasicPlayer bp = r.collider.GetComponent<BasicPlayer>();
-                if (bp == null || bp.gost != null) continue;
-                bp.gost = this;
+                if (bp == null || bp.ghost != null) continue;
+                bp.ghost = this;
                 transform.SetParent(bp.gameObject.transform);
                 transform.localPosition = Vector3.zero;
                 anim.SetTrigger("Possess");
@@ -64,10 +65,20 @@ public class Ghost : MonoBehaviour {
     {
         GameManager.gManager.players[playerID].position = transform.position;
     }
-    
+
     void EndPossession()
     {
         gameObject.SetActive(false);
+    }
+    void EndEscape()
+    {
+        enabled = true;
+    }
+    void Flip()
+    {
+        if (rigid.velocity.x > 0 && flipped == 1) flipped = -1;
+        if (rigid.velocity.x < 0 && flipped == -1) flipped = 1;
+        transform.localScale = new Vector3(flipped, transform.localScale.y, transform.localScale.z);
     }
 }
 [System.Serializable]

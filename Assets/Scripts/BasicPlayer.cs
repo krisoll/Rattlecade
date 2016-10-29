@@ -7,7 +7,8 @@ public class BasicPlayer : MonoBehaviour {
     public BoxCollider2D box;
     public Animator anim;
     public LayerMask ground;
-    public Ghost gost;
+    public Ghost ghost;
+    public int health;
     public float velocity;
     public float jumpVelocity;
     private RaycastHit2D grounded;
@@ -35,6 +36,16 @@ public class BasicPlayer : MonoBehaviour {
         horizontal = rePlayer.GetAxisRaw("Horizontal");
         anim.SetFloat("Velocity", Mathf.Abs(horizontal));
         rigid.velocity = new Vector2(horizontal * velocity, rigid.velocity.y);
+        if (rePlayer.GetButtonDown("Leave") || health <= 0)
+        {
+            this.canMove = false;
+            ghost.transform.SetParent(null);
+            ghost.gameObject.SetActive(true);
+            ghost.anim.SetTrigger("Escaping");
+            anim.SetTrigger("Die");
+            ghost = null;
+            anim.SetFloat("Velocity", 0);
+        }
 	}
 
     void Flip()
@@ -47,6 +58,13 @@ public class BasicPlayer : MonoBehaviour {
     public void CanMove()
     {
         canMove = true;
-        rePlayer = ReInput.players.GetPlayer(gost.playerID);
+        rePlayer = ReInput.players.GetPlayer(ghost.playerID);
     }
+
+    public void Damage(int i)
+    {
+        if (!canMove) return;
+
+    }
+
 }
