@@ -117,9 +117,10 @@ public class Ghost : MonoBehaviour {
     }
     public void Die()
     {
-        if (invulnerabilityTime > 0) return;
+        if (invulnerabilityTime > 0 || !enabled) return;
         anim.SetTrigger("Die");
         alive = false;
+        Camera.main.GetComponent<ProCamera2D>().RemoveCameraTarget(transform);
         GameManager.gManager.players[playerID].dead = true;
     }
     public void destroySelf()
