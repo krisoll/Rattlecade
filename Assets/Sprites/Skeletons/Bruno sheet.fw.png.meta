@@ -1,0 +1,213 @@
+fileFormatVersion: 2
+guid: ce5a3dfd4f9faf748bf4a115bdff429d
+timeCreated: 1477704672
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Bruno sheet.fw_0
+    21300002: Bruno sheet.fw_1
+    21300004: Bruno sheet.fw_2
+    21300006: Bruno sheet.fw_3
+    21300008: Bruno sheet.fw_4
+    21300010: Bruno sheet.fw_5
+    21300012: Bruno sheet.fw_6
+    21300014: Bruno sheet.fw_7
+    21300016: Bruno sheet.fw_8
+    21300018: Bruno sheet.fw_9
+    21300020: Bruno sheet.fw_10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bruno sheet.fw_0
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 68
+        width: 20
+        height: 20
+      alignment: 9
+      pivot: {x: 0.715584, y: 0.110557936}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bruno sheet.fw_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 42
+        width: 12
+        height: 21
+      alignment: 9
+      pivot: {x: 0.30296087, y: 0.86427397}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bruno sheet.fw_2
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 45
+        width: 19
+        height: 21
+      alignment: 9
+      pivot: {x: 0.6610473, y: 0.036378406}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bruno sheet.fw_3
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 46
+        width: 12
+        height: 21
+      alignment: 9
+      pivot: {x: 0.29137006, y: 0.87752026}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bruno sheet.fw_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 19
+        width: 16
+        height: 20
+      alignment: 9
+      pivot: {x: 0.84771615, y: 0.8824879}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bruno sheet.fw_5
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 36
+        width: 18
+        height: 7
+      alignment: 9
+      pivot: {x: 0.39182174, y: 0.817912}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bruno sheet.fw_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 25
+        width: 16
+        height: 20
+      alignment: 9
+      pivot: {x: 0.87379456, y: 0.9798481}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bruno sheet.fw_7
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 26
+        width: 8
+        height: 9
+      alignment: 9
+      pivot: {x: 0.5695429, y: 0.90180504}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bruno sheet.fw_8
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 25
+        width: 11
+        height: 11
+      alignment: 9
+      pivot: {x: 0.3356247, y: 0.8793266}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bruno sheet.fw_9
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 0
+        width: 15
+        height: 22
+      alignment: 9
+      pivot: {x: 0.42582017, y: 0.9615143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Bruno sheet.fw_10
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 0
+        width: 15
+        height: 22
+      alignment: 9
+      pivot: {x: 0.43509293, y: 0.9615143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
