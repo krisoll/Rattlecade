@@ -84,6 +84,16 @@ public class Ghost : MonoBehaviour {
         if (rigid.velocity.x < 0 && flipped == -1) flipped = 1;
         transform.localScale = new Vector3(flipped, transform.localScale.y, transform.localScale.z);
     }
+    public void Die()
+    {
+        anim.SetTrigger("Die");
+        alive = false;
+        GameManager.gManager.players[playerID].dead = true;
+    }
+    public void destroySelf()
+    {
+        if (!alive) Destroy(gameObject);
+    }
 }
 [System.Serializable]
 public class playerData
