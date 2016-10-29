@@ -19,7 +19,11 @@ public class Ghost : MonoBehaviour {
     private int flipped = -1;
     [HideInInspector]
     public bool free;
+    [HideInInspector]
     public float lightTime;
+    [HideInInspector]
+    public float invulnerabilityTime;
+    public float maxInv;
 
 
     // Use this for initialization
@@ -41,7 +45,7 @@ public class Ghost : MonoBehaviour {
         {
             return;
         }
-        
+        invulnerabilityTime = Mathf.Clamp(invulnerabilityTime - Time.deltaTime, 0, maxInv);
         detectControl();
         savePosition();
 	}
@@ -49,11 +53,19 @@ public class Ghost : MonoBehaviour {
     void LateUpdate()
     {
         if (!free) return;
-        lightTime = Mathf.Clamp(lightTime - Time.deltaTime, 0, 1);
-        sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 
-                                    Mathf.Max(GameManager.gManager.players[playerID].alpha, lightTime));
-        GameManager.gManager.players[playerID].alpha = 0;
-        lightCircle.color = new Color(lightCircle.color.r, lightCircle.color.g, lightCircle.color.b, lightTime / 2);
+        if (alive)
+        {
+            lightTime = Mathf.Clamp(lightTime - Time.deltaTime, 0, 1);
+            sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b,
+                                        Mathf.Max(GameManager.gManager.players[playerID].alpha, lightTime));
+            GameManager.gManager.players[playerID].alpha = 0;
+            lightCircle.color = new Color(lightCircle.color.r, lightCircle.color.g, lightCircle.color.b, lightTime / 2);
+        }
+        else
+        {
+            sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1);
+            lightCircle.color = new Color(lightCircle.color.r, lightCircle.color.g, lightCircle.color.b, 0);
+        }
     }
 
     void detectControl()
@@ -69,7 +81,7 @@ public class Ghost : MonoBehaviour {
             foreach(RaycastHit2D r in rch)
             {
                 BasicPlayer bp = r.collider.GetComponent<BasicPlayer>();
-                if (bp == null || bp.ghost != null || bp.health <= 0) continue;
+                if (bp == null || bp.ghost != null || bp.health <= 0 || bp.stamina < 3) continue;
                 bp.ghost = this;
                 transform.SetParent(bp.gameObject.transform);
                 transform.localPosition = Vector3.zero;
@@ -91,9 +103,7 @@ public class Ghost : MonoBehaviour {
 
     void EndPossession()
     {
-        if (alive)
-            gameObject.SetActive(false);
-        else Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     void EndEscape()
     {
@@ -107,13 +117,14 @@ public class Ghost : MonoBehaviour {
     }
     public void Die()
     {
-        anim.SetTrigger("Possess");
+        if (invulnerabilityTime > 0) return;
+        anim.SetTrigger("Die");
         alive = false;
         GameManager.gManager.players[playerID].dead = true;
     }
     public void destroySelf()
     {
-        if (!alive) Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
 [System.Serializable]

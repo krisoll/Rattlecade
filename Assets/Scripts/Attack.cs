@@ -9,7 +9,9 @@ public class Attack : MonoBehaviour
     public int damage;
     public LayerMask targets;
     public int fliped;
+    [HideInInspector]
     public List<int> ignoreID;
+    public bool affectStamina;
 
     void Start()
     {
@@ -25,13 +27,15 @@ public class Attack : MonoBehaviour
             BasicPlayer bp = r.collider.GetComponent<BasicPlayer>();
             if (bp != null)
             {
-                if (bp.playerID != playerID && !ignoreID.Contains(r.collider.GetInstanceID()))
+                if (bp.playerID != playerID && !ignoreID.Contains(r.collider.gameObject.GetInstanceID()))
                 {
-                    ignoreID.Add(r.collider.GetInstanceID());
-                    bp.Damage(damage);
+                    ignoreID.Add(r.collider.gameObject.GetInstanceID());
+                    if (!affectStamina) bp.Damage(damage);
+                    else bp.Stamina(damage);
                     return;
                 }
             }
+            if (affectStamina) continue;
             Ghost g = r.collider.GetComponent<Ghost>();
             if (g != null)
             {

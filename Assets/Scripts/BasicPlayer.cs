@@ -20,6 +20,7 @@ public class BasicPlayer : MonoBehaviour {
     public GameObject weaponContainer;
     public int health;
     public int stamina;
+    public int maxStamina;
     public float velocity;
     public float jumpVelocity;
     public float aimSensibility;
@@ -31,6 +32,7 @@ public class BasicPlayer : MonoBehaviour {
     private float TimeCount;
     private float TimeCount2;
     private Vector2 savedAim;
+    private float koTimeCount;
 
     void OnDrawGizmos()
     {
@@ -49,6 +51,7 @@ public class BasicPlayer : MonoBehaviour {
         anim.SetBool("Grounded", true);
         ats = GetComponentsInChildren<Attack>();
         savedAim = Vector2.right * 2;
+        stamina = maxStamina;
     }
 	
 	// Update is called once per frame
@@ -56,6 +59,12 @@ public class BasicPlayer : MonoBehaviour {
         if (health <= 0)
         {
             DestroySelf();
+        }
+        koTimeCount += Time.deltaTime;
+        if(koTimeCount > 3)
+        {
+            koTimeCount = 0;
+            stamina = Mathf.Clamp(stamina + 1, 0, maxStamina);
         }
         if (!canMove) return;
         grounded = Physics2D.BoxCast(new Vector2(transform.position.x + box.offset.x, transform.position.y + box.offset.y), 
@@ -135,7 +144,7 @@ public class BasicPlayer : MonoBehaviour {
                 }
             }
         }
-        else if (rePlayer.GetButtonDown("Leave") || health <= 0)
+        else if (rePlayer.GetButtonDown("Leave") || health <= 0 || stamina <= 0)
         {
             this.canMove = false;
             ghost.transform.SetParent(null);
@@ -146,6 +155,7 @@ public class BasicPlayer : MonoBehaviour {
             anim.ResetTrigger("Attack");
             anim.ResetTrigger("Shoot");
             ghost.free = true;
+            ghost.invulnerabilityTime = ghost.maxInv;
             ghost = null;
             anim.SetFloat("Velocity", 0);
         }
@@ -229,6 +239,12 @@ public class BasicPlayer : MonoBehaviour {
     {
         if (!canMove) return;
         health -= i;
+    }
+
+    public void Stamina(int i)
+    {
+        if (!canMove) return;
+        stamina = Mathf.Clamp(stamina - i, 0, maxStamina);
     }
 
     public void activateWeapon()
