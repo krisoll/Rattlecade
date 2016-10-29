@@ -184,6 +184,7 @@ public class BasicPlayer : MonoBehaviour {
         if (ghost == null) return;
         canMove = true;
         rePlayer = ReInput.players.GetPlayer(ghost.playerID);
+        playerID = ghost.playerID;
     }
 
     public void Damage(int i)
