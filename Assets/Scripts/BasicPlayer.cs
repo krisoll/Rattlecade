@@ -93,6 +93,7 @@ public class BasicPlayer : MonoBehaviour {
                     w.transform.SetParent(weaponContainer.transform);
                     w.transform.localPosition = Vector2.zero;
                     w.transform.localEulerAngles = Vector2.zero;
+                    w.transform.localScale = new Vector3(1, 1, 1);
                     w.rigid.velocity = Vector2.zero;
                     w.rigid.Sleep();
                     w.rigid.isKinematic = true;
@@ -103,6 +104,7 @@ public class BasicPlayer : MonoBehaviour {
                         case Weapon.WeaponType.ShortRange: anim.SetInteger("Weapon", 2); break;
                         case Weapon.WeaponType.Melee: anim.SetInteger("Weapon", 3); break;
                     }
+                    anim.SetTrigger("ChangeWeapon");
                     ats = GetComponentsInChildren<Attack>();
                     foreach (Attack a in ats)
                     {
@@ -114,11 +116,13 @@ public class BasicPlayer : MonoBehaviour {
             else
             {
                 anim.SetInteger("Weapon", 0);
+                anim.SetTrigger("ChangeWeapon");
                 weapon.equiped = false;
                 weapon.transform.SetParent(null);
                 weapon.rigid.WakeUp();
                 weapon.box.enabled = true;
                 weapon.rigid.isKinematic = false;
+                weapon.destroySelf();
                 weapon = null;
                 ats = GetComponentsInChildren<Attack>();
                 foreach (Attack a in ats)
@@ -195,6 +199,7 @@ public class BasicPlayer : MonoBehaviour {
         {
             a.fliped = flipped;
         }
+        if (weapon != null) weapon.flipped = flipped;
         transform.localScale = new Vector3(flipped, transform.localScale.y, transform.localScale.z);
         Vector3 diff = v - (Vector2)pivotPoint.transform.position;
         diff.Normalize();

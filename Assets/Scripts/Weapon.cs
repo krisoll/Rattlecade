@@ -9,9 +9,11 @@ public class Weapon : MonoBehaviour
     public GameObject bullet;
     public BoxCollider2D box;
     public Attack attack;
+    public int ammo;
     public float spread;
     [HideInInspector]
     public bool equiped;
+    public int flipped;
     public WeaponType type;
     public enum WeaponType
     {
@@ -56,12 +58,27 @@ public class Weapon : MonoBehaviour
     public void Shoot()
     {
         if (anim == null) return;
-        anim.SetTrigger("Shoot");
+        if (ammo > 0) anim.SetTrigger("Shoot");
     }
 
     public void fireBullet()
     {
+        if (ammo <= 0) return;
         if (bullet != null && shooter != null)
-            Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, shooter.transform.eulerAngles.z));
+        {
+            GameObject go = (GameObject)Instantiate(bullet, shooter.transform.position, Quaternion.Euler(0, 0, shooter.transform.eulerAngles.z));
+            Bullet b = go.GetComponent<Bullet>();
+            go.transform.eulerAngles = new Vector3(0, 0, go.transform.eulerAngles.z + Random.Range(-spread, spread));
+            if(flipped > 0) go.transform.eulerAngles = new Vector3(0, 0, go.transform.eulerAngles.z - 180);
+            ammo--;
+        }
+    }
+
+    public void destroySelf()
+    {
+        if(type != WeaponType.Melee && ammo <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
