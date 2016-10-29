@@ -305,6 +305,10 @@ public class Ferr2DT_PathTerrain : MonoBehaviour, Ferr2D_IPath {
 	
 	Mesh GetMesh() {
 		MeshFilter filter  = GetComponent<MeshFilter>();
+<<<<<<< HEAD
+=======
+        while (filter == null) ;
+>>>>>>> origin/master
 		string     newName = GetMeshName();
 		Mesh       result  = filter.sharedMesh;
 		
