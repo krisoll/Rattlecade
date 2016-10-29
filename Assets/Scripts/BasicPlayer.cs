@@ -13,7 +13,9 @@ public class BasicPlayer : MonoBehaviour {
     public Ghost ghost;
     public GameObject pivotPoint;
     private List<SpriteRenderer> sprites;
+    [HideInInspector]
     public Weapon weapon;
+    public GameObject weaponContainer;
     public int health;
     public int stamina;
     public float velocity;
@@ -30,6 +32,7 @@ public class BasicPlayer : MonoBehaviour {
         rePlayer = ReInput.players.GetPlayer(playerID);
         sprites = new List<SpriteRenderer>();
         getSR(gameObject, ref sprites);
+        anim.SetBool("Grounded", true);
     }
 	
 	// Update is called once per frame
@@ -54,13 +57,33 @@ public class BasicPlayer : MonoBehaviour {
         rigid.velocity = new Vector2(horizontal * velocity, rigid.velocity.y);
         if (rePlayer.GetButtonDown("Shoot"))
         {
-            if(weapon == null)
+            anim.SetTrigger("Attack");
+        }
+        else if (rePlayer.GetButtonDown("PickUp"))
+        {
+            if (weapon == null)
             {
-                anim.SetTrigger("Attack");
+                RaycastHit2D[] rch = Physics2D.BoxCastAll((Vector2)transform.position + box.offset, box.size, 0, Vector2.down, .1f,
+                                                   LayerMask.NameToLayer("Weapon"));
+                foreach (RaycastHit2D r in rch)
+                {
+                    Weapon w = r.collider.GetComponent<Weapon>();
+                    if (w == null || w.equiped) continue;
+                    weapon = w;
+                    w.equiped = true;
+                    w.transform.SetParent(weaponContainer.transform);
+                    w.transform.localPosition = Vector2.zero;
+                    w.transform.localEulerAngles = Vector2.zero;
+                    w.rigid.velocity = Vector2.zero;
+                    w.rigid.Sleep();
+                }
             }
             else
             {
-                anim.SetTrigger("Shoot");
+                weapon.equiped = false;
+                weapon.transform.SetParent(null);
+                weapon.rigid.WakeUp();
+                weapon = null;
             }
         }
         else if (rePlayer.GetButtonDown("Leave") || health <= 0)
@@ -68,6 +91,7 @@ public class BasicPlayer : MonoBehaviour {
             this.canMove = false;
             ghost.transform.SetParent(null);
             ghost.gameObject.SetActive(true);
+            anim.SetBool("Grounded", true);
             ghost.anim.SetTrigger("Escaping");
             anim.SetTrigger("Die");
             anim.ResetTrigger("Attack");
@@ -120,7 +144,9 @@ public class BasicPlayer : MonoBehaviour {
 
     public void FlipToMouse()
     {
-        Vector3 v = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 v;
+        if (playerID == 0) v = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        else v = pivotPoint.transform.position + new Vector3(rePlayer.GetAxis("HAim") * 10, rePlayer.GetAxis("VAim") * 10);
         if (transform.position.x < v.x && flipped == 1) flipped = -1;
         if (transform.position.x > v.x && flipped == -1) flipped = 1;
         transform.localScale = new Vector3(flipped, transform.localScale.y, transform.localScale.z);

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Rewired;
+using Com.LuisPedroFonseca.ProCamera2D;
 
 public class Ghost : MonoBehaviour {
     public Rigidbody2D rigid;
@@ -24,7 +25,9 @@ public class Ghost : MonoBehaviour {
             return;
         }
         rePlayer = ReInput.players.GetPlayer(playerID);
-	}
+        Camera.main.GetComponent<ProCamera2D>().AddCameraTarget(transform);
+
+    }
 	// Update is called once per frame
 	void Update () {
         if (!alive)
