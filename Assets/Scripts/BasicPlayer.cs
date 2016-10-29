@@ -5,6 +5,7 @@ public class BasicPlayer : MonoBehaviour {
     public int playerID;
     public Rigidbody2D rigid;
     public BoxCollider2D box;
+    public Animator anim;
     public LayerMask ground;
     public Ghost gost;
     public float velocity;
@@ -30,6 +31,7 @@ public class BasicPlayer : MonoBehaviour {
         }
         Flip();
         horizontal = rePlayer.GetAxisRaw("Horizontal");
+        anim.SetFloat("Velocity", Mathf.Abs(horizontal));
         rigid.velocity = new Vector2(horizontal * velocity, rigid.velocity.y);
 	}
 
