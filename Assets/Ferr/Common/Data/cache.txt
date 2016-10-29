@@ -7,5 +7,7 @@ Assets/Ferr/2DTerrain/TerrainMaterials/MossyTerrainMaterial.prefab
 Assets/Ferr/2DTerrain/TerrainMaterials/ForestTerrainMaterial.prefab
 Assets/Ferr/2DTerrain/TerrainMaterials/ForegroundTerrainMaterial.prefab
 Assets/Ferr/2DTerrain/TerrainMaterials/CaveTerrainMaterial.prefab
+Assets/Sprites/Maps/Arena 1/Arena terrain .prefab
+Assets/Sprites/Maps/Arena 1/brick wall terrain.prefab
 
 [Ferr2DT_PathTerrain]
