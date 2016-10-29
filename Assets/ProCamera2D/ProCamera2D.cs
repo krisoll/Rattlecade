@@ -248,7 +248,6 @@ namespace Com.LuisPedroFonseca.ProCamera2D
                 _cameraTargetVerticalPositionSmoothed = Vector3V(_cameraTargetPosition);
                 _previousCameraTargetVerticalPositionSmoothed = _cameraTargetVerticalPositionSmoothed;
             }
-            GameManager.gManager.camara = this;
         }
 
         void LateUpdate()

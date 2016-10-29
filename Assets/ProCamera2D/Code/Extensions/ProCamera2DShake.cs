@@ -102,8 +102,6 @@ namespace Com.LuisPedroFonseca.ProCamera2D
             }
 
             _originalRotation = _transform.localRotation;
-
-            GameManager.gManager.shake = this;
         }
 
         void Update()
