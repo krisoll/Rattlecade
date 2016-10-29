@@ -15,7 +15,6 @@ public class Ghost : MonoBehaviour {
     bool alive = true;
     private int flipped = -1;
 
-
     // Use this for initialization
     void Start ()
     {
@@ -26,10 +25,12 @@ public class Ghost : MonoBehaviour {
         }
         rePlayer = ReInput.players.GetPlayer(playerID);
 	}
-	
 	// Update is called once per frame
 	void Update () {
-        if (!alive) return;
+        if (!alive)
+        {
+            return;
+        }
         
         detectControl();
         savePosition();
@@ -48,7 +49,7 @@ public class Ghost : MonoBehaviour {
             foreach(RaycastHit2D r in rch)
             {
                 BasicPlayer bp = r.collider.GetComponent<BasicPlayer>();
-                if (bp == null || bp.ghost != null) continue;
+                if (bp == null || bp.ghost != null || bp.health <= 0) continue;
                 bp.ghost = this;
                 transform.SetParent(bp.gameObject.transform);
                 transform.localPosition = Vector3.zero;

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Rewired;
+using System.Collections.Generic;
+
 public class BasicPlayer : MonoBehaviour {
     public int playerID;
     public Rigidbody2D rigid;
@@ -10,6 +12,7 @@ public class BasicPlayer : MonoBehaviour {
     [HideInInspector]
     public Ghost ghost;
     public GameObject pivotPoint;
+    private List<SpriteRenderer> sprites;
     public int weapon;
     public int health;
     public int stamina;
@@ -20,13 +23,21 @@ public class BasicPlayer : MonoBehaviour {
     private float horizontal;
     private int flipped = -1;
     private bool canMove;
-	// Use this for initialization
-	void Start () {
+    private float TimeCount;
+    private float TimeCount2;
+    // Use this for initialization
+    void Start () {
         rePlayer = ReInput.players.GetPlayer(playerID);
-	}
+        sprites = new List<SpriteRenderer>();
+        getSR(gameObject, ref sprites);
+    }
 	
 	// Update is called once per frame
 	void Update () {
+        if (health <= 0)
+        {
+            DestroySelf();
+        }
         if (!canMove) return;
         grounded = Physics2D.BoxCast(new Vector2(transform.position.x + box.offset.x, transform.position.y + box.offset.y), box.size, 0, Vector2.down, 0.01f, ground);
         if (grounded)
@@ -61,6 +72,34 @@ public class BasicPlayer : MonoBehaviour {
         if (!canMove) return;
         FlipToMouse();
     }
+    
+    private void getSR(GameObject g, ref List<SpriteRenderer> list)
+    {
+        SpriteRenderer sr = g.GetComponent<SpriteRenderer>();
+        if (sr != null) list.Add(sr);
+        for (int i = 0; i < g.transform.childCount; i++)
+        {
+            getSR(g.transform.GetChild(i).gameObject, ref list);
+        }
+    }
+
+    void DestroySelf()
+    {
+        TimeCount += Time.deltaTime;
+        TimeCount2 += Time.deltaTime;
+        if (TimeCount > .05f + (2 - TimeCount2) / 20)
+        {
+            TimeCount = 0;
+            foreach(SpriteRenderer sr in sprites)
+            {
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a < .01f ? 1 : 0);
+            }
+        }
+        if(TimeCount2 > 2)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Flip()
     {
@@ -91,7 +130,7 @@ public class BasicPlayer : MonoBehaviour {
     public void Damage(int i)
     {
         if (!canMove) return;
-
+        health -= i;
     }
 
 }
